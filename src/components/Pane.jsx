@@ -15,8 +15,12 @@ function Pane(props) {
   } else {
     classes += ' layout-pane-primary';
   }
+  let eventHandlers = {};
+  if(props.eventHandlers){
+    eventHandlers = props.eventHandlers;
+  }
   return (
-    <div className={classes} style={style}>{props.children}</div>
+    <div className={classes} style={style} {...eventHandlers}>{props.children}</div>
   );
 }
 
@@ -28,7 +32,8 @@ Pane.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
-  ])
+  ]),
+  eventHandlers:PropTypes.object
 };
 
 Pane.defaultProps = {
@@ -36,7 +41,8 @@ Pane.defaultProps = {
   primary: false,
   size: 0,
   percentage: false,
-  children: []
+  children: [],
+  eventHandlers:null
 };
 
 export default Pane;

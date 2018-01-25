@@ -157,6 +157,7 @@ class SplitterLayout extends React.Component {
 
   render() {
     let containerClasses = 'splitter-layout';
+    let paneEventHandlers = {};
     if (this.props.customClassName) {
       containerClasses += ` ${this.props.customClassName}`;
     }
@@ -165,6 +166,10 @@ class SplitterLayout extends React.Component {
     }
     if (this.state.resizing) {
       containerClasses += ' layout-changing';
+    }
+
+    if(this.props.paneEventHandlers){
+      paneEventHandlers = this.props.paneEventHandlers;
     }
 
     const children = React.Children.toArray(this.props.children).slice(0, 2);
@@ -181,7 +186,7 @@ class SplitterLayout extends React.Component {
         size = this.state.secondaryPaneSize;
       }
       wrappedChildren.push(
-        <Pane vertical={this.props.vertical} percentage={this.props.percentage} primary={primary} size={size}>
+        <Pane vertical={this.props.vertical} percentage={this.props.percentage} primary={primary} size={size} eventHandlers={paneEventHandlers}>
           {children[i]}
         </Pane>
       );
@@ -215,7 +220,8 @@ SplitterLayout.propTypes = {
   onDragStart: PropTypes.func,
   onDragEnd: PropTypes.func,
   onSecondaryPaneSizeChange: PropTypes.func,
-  children: PropTypes.arrayOf(PropTypes.node)
+  paneEventHandlers: PropTypes.object,
+  children: PropTypes.arrayOf(PropTypes.node),
 };
 
 SplitterLayout.defaultProps = {
@@ -229,6 +235,7 @@ SplitterLayout.defaultProps = {
   onDragStart: null,
   onDragEnd: null,
   onSecondaryPaneSizeChange: null,
+  paneEventHandlers: null,
   children: []
 };
 

@@ -7,9 +7,17 @@
 [![David devDependencies](https://img.shields.io/david/dev/zesik/react-splitter-layout.svg)](https://david-dm.org/zesik/react-splitter-layout?type=dev)
 [![David peerDependencies](https://img.shields.io/david/peer/zesik/react-splitter-layout.svg)](https://david-dm.org/zesik/react-splitter-layout?type=peer)
 
-A simple split layout for React and modern browsers.
+This fork of react-splitter-layout supports setting additional event handlers (e.g. onScroll) on the Layout Panes.
+The SplitterLayout tag takes an object parameter "paneEventHandlers" where each key of the object is an event name, and the value is the handler.
+For example:
+    ```javascript
+    <SplitterLayout primaryIndex={1} secondaryMinSize={200} secondaryInitialSize={300} primaryMinSize={400} 
+              paneEventHandlers={{onScroll: this.updateScrollPosition}}> 
+              ...
+    </SplitterLayout>
+    ```
 
-[Demo](https://zesik.com/react-splitter-layout/)
+A simple split layout for React and modern browsers.
 
 ## Dependencies
 
