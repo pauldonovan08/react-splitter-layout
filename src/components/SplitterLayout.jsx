@@ -181,12 +181,14 @@ class SplitterLayout extends React.Component {
     for (let i = 0; i < children.length; ++i) {
       let primary = true;
       let size = null;
+      let id = this.props.primaryId;
       if (children.length > 1 && i !== primaryIndex) {
         primary = false;
         size = this.state.secondaryPaneSize;
+        id = this.props.secondaryId;
       }
       wrappedChildren.push(
-        <Pane vertical={this.props.vertical} percentage={this.props.percentage} primary={primary} size={size} eventHandlers={paneEventHandlers}>
+        <Pane id={id} vertical={this.props.vertical} percentage={this.props.percentage} primary={primary} size={size} eventHandlers={paneEventHandlers}>
           {children[i]}
         </Pane>
       );
@@ -215,6 +217,8 @@ SplitterLayout.propTypes = {
   percentage: PropTypes.bool,
   primaryIndex: PropTypes.number,
   primaryMinSize: PropTypes.number,
+  primaryId: PropTypes.string,
+  secondaryId: PropTypes.string,
   secondaryInitialSize: PropTypes.number,
   secondaryMinSize: PropTypes.number,
   onDragStart: PropTypes.func,
@@ -230,6 +234,8 @@ SplitterLayout.defaultProps = {
   percentage: false,
   primaryIndex: 0,
   primaryMinSize: 0,
+  primaryId: null,
+  secondaryId: null,
   secondaryInitialSize: undefined,
   secondaryMinSize: 0,
   onDragStart: null,

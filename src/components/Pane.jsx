@@ -20,11 +20,12 @@ function Pane(props) {
     eventHandlers = props.eventHandlers;
   }
   return (
-    <div className={classes} style={style} {...eventHandlers}>{props.children}</div>
+    <div id={props.id} className={classes} style={style} {...eventHandlers}>{props.children}</div>
   );
 }
 
 Pane.propTypes = {
+  id: PropTypes.string,
   vertical: PropTypes.bool,
   primary: PropTypes.bool,
   size: PropTypes.number,
@@ -37,6 +38,7 @@ Pane.propTypes = {
 };
 
 Pane.defaultProps = {
+  id:null,
   vertical: false,
   primary: false,
   size: 0,
