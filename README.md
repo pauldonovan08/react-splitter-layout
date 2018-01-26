@@ -10,6 +10,7 @@
 This fork of react-splitter-layout supports setting additional event handlers (e.g. onScroll) on the Layout Panes.
 The SplitterLayout tag takes an object parameter "paneEventHandlers" where each key of the object is an event name, and the value is the handler.
 For example:
+
     ```javascript
     <SplitterLayout primaryIndex={1} secondaryMinSize={200} secondaryInitialSize={300} primaryMinSize={400} 
               paneEventHandlers={{onScroll: this.updateScrollPosition}}> 
